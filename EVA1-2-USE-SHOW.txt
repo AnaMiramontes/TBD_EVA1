@@ -182,3 +182,90 @@ ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that
 +--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
 11 rows in set (0.0012 sec)
  MySQL  localhost:3306 ssl  sakila  SQL >
+Microsoft Windows [Versión 10.0.22621.3007]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\anami>mysqlsh
+MySQL Shell 8.0.35
+
+Copyright (c) 2016, 2023, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \c --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching schema names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 9
+Server version: 8.0.35 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  JS > create database_tbd_1;
+SyntaxError: Unexpected identifier 'database_tbd_1'
+ MySQL  localhost:3306 ssl  JS > create database tbd_1;
+SyntaxError: Unexpected identifier 'database'
+ MySQL  localhost:3306 ssl  JS > \create database tbd_1;
+Unknown command: '\create database tbd_1;'
+ MySQL  localhost:3306 ssl  JS > create database tbd_1;
+SyntaxError: Unexpected identifier 'database'
+ MySQL  localhost:3306 ssl  JS > show database
+SyntaxError: Unexpected identifier 'database'
+ MySQL  localhost:3306 ssl  JS > show database;
+SyntaxError: Unexpected identifier 'database'
+ MySQL  localhost:3306 ssl  JS > sql
+ReferenceError: sql is not defined
+ MySQL  localhost:3306 ssl  JS > \sql
+Switching to SQL mode... Commands end with ;
+Fetching global names for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  SQL > create database tbd_1;
+ERROR: 1007 (HY000): Can't create database 'tbd_1'; database exists
+ MySQL  localhost:3306 ssl  SQL > create database tbd_2;
+Query OK, 1 row affected (0.1788 sec)
+ MySQL  localhost:3306 ssl  SQL > drop database tbd_1;
+Query OK, 0 rows affected (1.2152 sec)
+ MySQL  localhost:3306 ssl  SQL > show database tbd_1;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database tbd_1' at line 1
+ MySQL  localhost:3306 ssl  SQL > show database;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+ MySQL  localhost:3306 ssl  SQL > show tables;
+ERROR: 1046 (3D000): No database selected
+ MySQL  localhost:3306 ssl  SQL >
+ MySQL  localhost:3306 ssl  SQL >
+ MySQL  localhost:3306 ssl  SQL > use world;
+Default schema set to `world`.
+Fetching global names, object names from `world` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  world  SQL > use tbd_2;
+Default schema set to `tbd_2`.
+Fetching global names, object names from `tbd_2` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_2  SQL > create table Estudiante;
+ERROR: 4028 (HY000): A table must have at least one visible column.
+ MySQL  localhost:3306 ssl  tbd_2  SQL > create table Estudiante
+                                      -> id int
+                                      -> id int,
+                                      -> nombre varchar(50),
+                                      -> apellidos varchar(50));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id int
+id int,
+nombre varchar(50),
+apellidos varchar(50))' at line 2
+ MySQL  localhost:3306 ssl  tbd_2  SQL > show tables;
+Empty set (0.0014 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > create table Estudiante
+                                      -> id int,
+                                      -> nombre varchar(50),
+                                      -> apellidos varchar(50));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id int,
+nombre varchar(50),
+apellidos varchar(50))' at line 2
+ MySQL  localhost:3306 ssl  tbd_2  SQL > create table Estudiante(
+                                      -> id int,
+                                      -> nombre varchar(50),
+                                      -> apellidos varchar(50));
+Query OK, 0 rows affected (1.2542 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > show tables;
++-----------------+
+| Tables_in_tbd_2 |
++-----------------+
+| estudiante      |
++-----------------+
+1 row in set (0.0012 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL >
