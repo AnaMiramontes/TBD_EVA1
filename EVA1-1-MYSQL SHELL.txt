@@ -1,0 +1,30 @@
+C:\Users\anami>\msqlsh
+"\msqlsh" no se reconoce como un comando interno o externo,
+programa o archivo por lotes ejecutable.
+
+C:\Users\anami>mysqlsh
+MySQL Shell 8.0.35
+
+Copyright (c) 2016, 2023, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \c -mc root@localhost
+WARNING: The -mc option was deprecated, please use --mc instead. (Option has been processed as --mc).
+Creating a Classic session to 'root@localhost'
+Fetching schema names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 10
+Server version: 8.0.35 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  JS > use sakiña
+SyntaxError: Unexpected identifier 'sakiña'
+ MySQL  localhost:3306 ssl  JS > use sakila
+SyntaxError: Unexpected identifier 'sakila'
+ MySQL  localhost:3306 ssl  JS > \use sakila
+Default schema set to `sakila`.
+ MySQL  localhost:3306 ssl  sakila  JS > show database
+SyntaxError: Unexpected identifier 'database'
+ MySQL  localhost:3306 ssl  sakila  JS > desc city
+SyntaxError: Unexpected identifier 'city'
+ MySQL  localhost:3306 ssl  sakila  JS >
