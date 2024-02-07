@@ -1,0 +1,184 @@
+Microsoft Windows [Versión 10.0.22621.3007]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\anami>\mysqlsh
+"\mysqlsh" no se reconoce como un comando interno o externo,
+programa o archivo por lotes ejecutable.
+
+C:\Users\anami>mysqlsh
+MySQL Shell 8.0.35
+
+Copyright (c) 2016, 2023, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect -mc root@localhost
+WARNING: The -mc option was deprecated, please use --mc instead. (Option has been processed as --mc).
+Creating a Classic session to 'root@localhost'
+MySQL Error 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+MySQL Error 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 8.0.35 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.0022 sec)
+ MySQL  localhost:3306 ssl  SQL > use sakila;
+Default schema set to `sakila`.
+Fetching global names, object names from `sakila` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  sakila  SQL > use world;
+Default schema set to `world`.
+Fetching global names, object names from `world` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  world  SQL > show tables;
++-----------------+
+| Tables_in_world |
++-----------------+
+| city            |
+| country         |
+| countrylanguage |
++-----------------+
+3 rows in set (0.0047 sec)
+ MySQL  localhost:3306 ssl  world  SQL > use sakila;
+Default schema set to `sakila`.
+Fetching global names, object names from `sakila` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  sakila  SQL > show tables;
++----------------------------+
+| Tables_in_sakila           |
++----------------------------+
+| actor                      |
+| actor_info                 |
+| address                    |
+| category                   |
+| city                       |
+| country                    |
+| customer                   |
+| customer_list              |
+| film                       |
+| film_actor                 |
+| film_category              |
+| film_list                  |
+| film_text                  |
+| inventory                  |
+| language                   |
+| nicer_but_slower_film_list |
+| payment                    |
+| rental                     |
+| sales_by_film_category     |
+| sales_by_store             |
+| staff                      |
+| staff_list                 |
+| store                      |
++----------------------------+
+23 rows in set (0.0040 sec)
+ MySQL  localhost:3306 ssl  sakila  SQL > show priviliges;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'priviliges' at line 1
+ MySQL  localhost:3306 ssl  sakila  SQL > show privileges;
++------------------------------+---------------------------------------+-------------------------------------------------------+
+| Privilege                    | Context                               | Comment                                               |
++------------------------------+---------------------------------------+-------------------------------------------------------+
+| Alter                        | Tables                                | To alter the table                                    |
+| Alter routine                | Functions,Procedures                  | To alter or drop stored functions/procedures          |
+| Create                       | Databases,Tables,Indexes              | To create new databases and tables                    |
+| Create routine               | Databases                             | To use CREATE FUNCTION/PROCEDURE                      |
+| Create role                  | Server Admin                          | To create new roles                                   |
+| Create temporary tables      | Databases                             | To use CREATE TEMPORARY TABLE                         |
+| Create view                  | Tables                                | To create new views                                   |
+| Create user                  | Server Admin                          | To create new users                                   |
+| Delete                       | Tables                                | To delete existing rows                               |
+| Drop                         | Databases,Tables                      | To drop databases, tables, and views                  |
+| Drop role                    | Server Admin                          | To drop roles                                         |
+| Event                        | Server Admin                          | To create, alter, drop and execute events             |
+| Execute                      | Functions,Procedures                  | To execute stored routines                            |
+| File                         | File access on server                 | To read and write files on the server                 |
+| Grant option                 | Databases,Tables,Functions,Procedures | To give to other users those privileges you possess   |
+| Index                        | Tables                                | To create or drop indexes                             |
+| Insert                       | Tables                                | To insert data into tables                            |
+| Lock tables                  | Databases                             | To use LOCK TABLES (together with SELECT privilege)   |
+| Process                      | Server Admin                          | To view the plain text of currently executing queries |
+| Proxy                        | Server Admin                          | To make proxy user possible                           |
+| References                   | Databases,Tables                      | To have references on tables                          |
+| Reload                       | Server Admin                          | To reload or refresh tables, logs and privileges      |
+| Replication client           | Server Admin                          | To ask where the slave or master servers are          |
+| Replication slave            | Server Admin                          | To read binary log events from the master             |
+| Select                       | Tables                                | To retrieve rows from table                           |
+| Show databases               | Server Admin                          | To see all databases with SHOW DATABASES              |
+| Show view                    | Tables                                | To see views with SHOW CREATE VIEW                    |
+| Shutdown                     | Server Admin                          | To shut down the server                               |
+| Super                        | Server Admin                          | To use KILL thread, SET GLOBAL, CHANGE MASTER, etc.   |
+| Trigger                      | Tables                                | To use triggers                                       |
+| Create tablespace            | Server Admin                          | To create/alter/drop tablespaces                      |
+| Update                       | Tables                                | To update existing rows                               |
+| Usage                        | Server Admin                          | No privileges - allow connect only                    |
+| ENCRYPTION_KEY_ADMIN         | Server Admin                          |                                                       |
+| INNODB_REDO_LOG_ARCHIVE      | Server Admin                          |                                                       |
+| RESOURCE_GROUP_USER          | Server Admin                          |                                                       |
+| FIREWALL_EXEMPT              | Server Admin                          |                                                       |
+| SET_USER_ID                  | Server Admin                          |                                                       |
+| SERVICE_CONNECTION_ADMIN     | Server Admin                          |                                                       |
+| GROUP_REPLICATION_ADMIN      | Server Admin                          |                                                       |
+| AUDIT_ABORT_EXEMPT           | Server Admin                          |                                                       |
+| GROUP_REPLICATION_STREAM     | Server Admin                          |                                                       |
+| CLONE_ADMIN                  | Server Admin                          |                                                       |
+| SYSTEM_USER                  | Server Admin                          |                                                       |
+| AUTHENTICATION_POLICY_ADMIN  | Server Admin                          |                                                       |
+| SHOW_ROUTINE                 | Server Admin                          |                                                       |
+| BACKUP_ADMIN                 | Server Admin                          |                                                       |
+| CONNECTION_ADMIN             | Server Admin                          |                                                       |
+| PERSIST_RO_VARIABLES_ADMIN   | Server Admin                          |                                                       |
+| RESOURCE_GROUP_ADMIN         | Server Admin                          |                                                       |
+| SESSION_VARIABLES_ADMIN      | Server Admin                          |                                                       |
+| SYSTEM_VARIABLES_ADMIN       | Server Admin                          |                                                       |
+| APPLICATION_PASSWORD_ADMIN   | Server Admin                          |                                                       |
+| FLUSH_OPTIMIZER_COSTS        | Server Admin                          |                                                       |
+| AUDIT_ADMIN                  | Server Admin                          |                                                       |
+| BINLOG_ADMIN                 | Server Admin                          |                                                       |
+| BINLOG_ENCRYPTION_ADMIN      | Server Admin                          |                                                       |
+| FLUSH_STATUS                 | Server Admin                          |                                                       |
+| FLUSH_TABLES                 | Server Admin                          |                                                       |
+| FLUSH_USER_RESOURCES         | Server Admin                          |                                                       |
+| REPLICATION_APPLIER          | Server Admin                          |                                                       |
+| INNODB_REDO_LOG_ENABLE       | Server Admin                          |                                                       |
+| XA_RECOVER_ADMIN             | Server Admin                          |                                                       |
+| PASSWORDLESS_USER_ADMIN      | Server Admin                          |                                                       |
+| TABLE_ENCRYPTION_ADMIN       | Server Admin                          |                                                       |
+| ROLE_ADMIN                   | Server Admin                          |                                                       |
+| REPLICATION_SLAVE_ADMIN      | Server Admin                          |                                                       |
+| SENSITIVE_VARIABLES_OBSERVER | Server Admin                          |                                                       |
+| TELEMETRY_LOG_ADMIN          | Server Admin                          |                                                       |
++------------------------------+---------------------------------------+-------------------------------------------------------+
+69 rows in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  sakila  SQL > show engines;
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+| ndbinfo            | NO      | MySQL Cluster system information storage engine                | NULL         | NULL | NULL       |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+| ndbcluster         | NO      | Clustered, fault-tolerant tables                               | NULL         | NULL | NULL       |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+11 rows in set (0.0012 sec)
+ MySQL  localhost:3306 ssl  sakila  SQL >
