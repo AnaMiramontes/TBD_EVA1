@@ -1,0 +1,132 @@
+Microsoft Windows [Versión 10.0.22621.3007]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\Windows\System32>mysqlsh
+MySQL Shell 8.0.35
+
+Copyright (c) 2016, 2023, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \c --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching schema names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 13
+Server version: 8.0.35 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  JS > \sql
+Switching to SQL mode... Commands end with ;
+Fetching global names for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  SQL > use tbd_2
+Default schema set to `tbd_2`.
+Fetching global names, object names from `tbd_2` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_2  SQL > desc Playeras;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| id     | int         | NO   | PRI | NULL    | auto_increment |
+| nombre | varchar(50) | NO   |     | NULL    |                |
+| talla  | varchar(50) | NO   |     | NULL    |                |
+| tipo   | varchar(50) | NO   |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+4 rows in set (0.0037 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > alter table Playeras
+                                      -> modify talla enum("xs","s","l","xl","xxl");
+Query OK, 1 row affected (2.8337 sec)
+
+Records: 1  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  tbd_2  SQL > desc Playeras;
++--------+-------------------------------+------+-----+---------+----------------+
+| Field  | Type                          | Null | Key | Default | Extra          |
++--------+-------------------------------+------+-----+---------+----------------+
+| id     | int                           | NO   | PRI | NULL    | auto_increment |
+| nombre | varchar(50)                   | NO   |     | NULL    |                |
+| talla  | enum('xs','s','l','xl','xxl') | YES  |     | NULL    |                |
+| tipo   | varchar(50)                   | NO   |     | NULL    |                |
++--------+-------------------------------+------+-----+---------+----------------+
+4 rows in set (0.0038 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > select * from Playeras;
++----+-----------+-------+------+
+| id | nombre    | talla | tipo |
++----+-----------+-------+------+
+|  1 | Playerota | l     | Polo |
++----+-----------+-------+------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > insert into Playeras(nombre,talla,tipo) values("Playerototota","L","Pololote");
+
+Query OK, 1 row affected (4.0061 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > select * from Playeras;
++----+---------------+-------+----------+
+| id | nombre        | talla | tipo     |
++----+---------------+-------+----------+
+|  1 | Playerota     | l     | Polo     |
+|  2 | Playerototota | l     | Pololote |
++----+---------------+-------+----------+
+2 rows in set (0.0012 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > alter table Playeras
+                                      -> modify tipo enum("Polo","Slim","Normal","Cuello redondo");
+ERROR: 1265 (01000): Data truncated for column 'tipo' at row 2
+ MySQL  localhost:3306 ssl  tbd_2  SQL > select * from Playeras;
++----+---------------+-------+----------+
+| id | nombre        | talla | tipo     |
++----+---------------+-------+----------+
+|  1 | Playerota     | l     | Polo     |
+|  2 | Playerototota | l     | Pololote |
++----+---------------+-------+----------+
+2 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > insert into Playeras(nombre,talla,tipo) values("Playerototota","S","Pololote");
+
+Query OK, 1 row affected (0.1969 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > select * from Playeras;
++----+---------------+-------+----------+
+| id | nombre        | talla | tipo     |
++----+---------------+-------+----------+
+|  1 | Playerota     | l     | Polo     |
+|  2 | Playerototota | l     | Pololote |
+|  3 | Playerototota | s     | Pololote |
++----+---------------+-------+----------+
+3 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > delete from Playeras
+                                      -> where id = 3;
+Query OK, 1 row affected (5.1694 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > select * from Playeras;
++----+---------------+-------+----------+
+| id | nombre        | talla | tipo     |
++----+---------------+-------+----------+
+|  1 | Playerota     | l     | Polo     |
+|  2 | Playerototota | l     | Pololote |
++----+---------------+-------+----------+
+2 rows in set (0.0012 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > alter table Playeras
+                                      -> modify nombre varchar(50) not null unique;
+Query OK, 0 rows affected (18.1372 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  tbd_2  SQL > desc Playeras;
++--------+-------------------------------+------+-----+---------+----------------+
+| Field  | Type                          | Null | Key | Default | Extra          |
++--------+-------------------------------+------+-----+---------+----------------+
+| id     | int                           | NO   | PRI | NULL    | auto_increment |
+| nombre | varchar(50)                   | NO   | UNI | NULL    |                |
+| talla  | enum('xs','s','l','xl','xxl') | YES  |     | NULL    |                |
+| tipo   | varchar(50)                   | NO   |     | NULL    |                |
++--------+-------------------------------+------+-----+---------+----------------+
+4 rows in set (0.0039 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > insert into Playeras(nombre,talla,tipo) values("Playerototota","S","Pololote");
+
+ERROR: 1062 (23000): Duplicate entry 'Playerototota' for key 'playeras.nombre'
+ MySQL  localhost:3306 ssl  tbd_2  SQL > insert into Playeras(nombre,talla,tipo) values("Playerota","S","Pololote");
+ERROR: 1062 (23000): Duplicate entry 'Playerota' for key 'playeras.nombre'
+ MySQL  localhost:3306 ssl  tbd_2  SQL > insert into Playeras(nombre,talla,tipo) values("Playerita","S","Pololote");
+Query OK, 1 row affected (2.4156 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL > select * from Playeras;
++----+---------------+-------+----------+
+| id | nombre        | talla | tipo     |
++----+---------------+-------+----------+
+|  1 | Playerota     | l     | Polo     |
+|  2 | Playerototota | l     | Pololote |
+|  6 | Playerita     | s     | Pololote |
++----+---------------+-------+----------+
+3 rows in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  tbd_2  SQL >
