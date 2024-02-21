@@ -1,0 +1,70 @@
+Microsoft Windows [Versión 10.0.22621.3155]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\anami>mysqlsh
+MySQL Shell 8.0.35
+
+Copyright (c) 2016, 2023, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \c --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching schema names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 8.0.35 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  JS > \sql
+Switching to SQL mode... Commands end with ;
+Fetching global names for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  SQL > use sakila;
+Default schema set to `sakila`.
+Fetching global names, object names from `sakila` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  sakila  SQL > select customer_id, count(*) as rentas from rental group by customer_id
+                                       -> order by rentas desc limit 1;
++-------------+--------+
+| customer_id | rentas |
++-------------+--------+
+|         148 |     46 |
++-------------+--------+
+1 row in set (0.2425 sec)
+ MySQL  localhost:3306 ssl  sakila  SQL > select category_id, count(*) as name from fild_category group by category_id order by name desc limit 1;
+ERROR: 1146 (42S02): Table 'sakila.fild_category' doesn't exist
+ MySQL  localhost:3306 ssl  sakila  SQL > select category_id, count(*) as name from film_category group by category_id order by name desc limit 1;
++-------------+------+
+| category_id | name |
++-------------+------+
+|          15 |   74 |
++-------------+------+
+1 row in set (0.0419 sec)
+ MySQL  localhost:3306 ssl  sakila  SQL > select category_id, count(*) as name from film_category group by category_id order by name asc limit 1;
++-------------+------+
+| category_id | name |
++-------------+------+
+|          12 |   51 |
++-------------+------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  sakila  SQL > select * from category;
++-------------+-------------+---------------------+
+| category_id | name        | last_update         |
++-------------+-------------+---------------------+
+|           1 | Action      | 2006-02-15 05:46:27 |
+|           2 | Animation   | 2006-02-15 05:46:27 |
+|           3 | Children    | 2006-02-15 05:46:27 |
+|           4 | Classics    | 2006-02-15 05:46:27 |
+|           5 | Comedy      | 2006-02-15 05:46:27 |
+|           6 | Documentary | 2006-02-15 05:46:27 |
+|           7 | Drama       | 2006-02-15 05:46:27 |
+|           8 | Family      | 2006-02-15 05:46:27 |
+|           9 | Foreign     | 2006-02-15 05:46:27 |
+|          10 | Games       | 2006-02-15 05:46:27 |
+|          11 | Horror      | 2006-02-15 05:46:27 |
+|          12 | Music       | 2006-02-15 05:46:27 |
+|          13 | New         | 2006-02-15 05:46:27 |
+|          14 | Sci-Fi      | 2006-02-15 05:46:27 |
+|          15 | Sports      | 2006-02-15 05:46:27 |
+|          16 | Travel      | 2006-02-15 05:46:27 |
++-------------+-------------+---------------------+
+16 rows in set (0.0360 sec)
+ MySQL  localhost:3306 ssl  sakila  SQL >
